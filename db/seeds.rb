@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-puts "starting.."
+puts 'starting..'
 
-User.destroy_all
 Petsitter.destroy_all
+User.destroy_all
 
 50.times do
   User.create!(
@@ -18,7 +18,7 @@ Petsitter.destroy_all
   )
 end
 
-categories = %w(chien chat éléphant kangal hamster tortue)
+categories = %w[chien chat éléphant kangal hamster tortue]
 # day_price = %w()
 
 User.find_each do |user|
