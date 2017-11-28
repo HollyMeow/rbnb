@@ -5,3 +5,30 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "starting.."
+
+User.destroy_all
+Petsitter.destroy_all
+
+50.times do
+  User.create!(
+    email: Faker::Internet.email,
+    password: Faker::Internet.password
+  )
+end
+
+categories = %w(chien chat éléphant kangal hamster tortue)
+# day_price = %w()
+
+User.find_each do |user|
+  Petsitter.create!(
+    description: Faker::Pokemon.name,
+    category: categories.sample,
+    location: Faker::Address.street_name,
+    price: rand(100),
+    user: user
+  )
+end
+
+puts "End, #{Petsitter.count} pets added to DB"
