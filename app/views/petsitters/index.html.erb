@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Nos meilleurs pet sitters de ta région</h1>
+      <p><%=Petsitter.count%> annonces trouvées selon tes critères</p>
+
+      <% @petsitters.each do |petsitter| %>
+      <ul>
+        <li><%= link_to petsitter.description, petsitter_path(petsitter.id) %></li>
+      </ul>
+
+      <% end %>
+    </div>
+  </div>
+</div>
