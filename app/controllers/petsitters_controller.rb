@@ -1,13 +1,13 @@
 class PetsittersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_petsitter, only: [:edit, :update, :show, :destroy]
+  before_action :set_petsitter, only: %i[edit update show destroy]
+  # Whitelist les vues pour les users qui ne sont pas enregistrés
+  skip_before_action :authenticate_user!, only: %i[index show edit destroy]
 
   def index
     @petsitters = Petsitter.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @petsitter = Petsitter.new
@@ -19,8 +19,7 @@ class PetsittersController < ApplicationController
     redirect_to petsitter(@petsitter)
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @petsitter.update(petsitter_params)
@@ -28,6 +27,7 @@ class PetsittersController < ApplicationController
 
   def destroy
     @petsitter.destroy
+    # redirect_to petsitters_path => Doit rediriger vers le dashboard
   end
 
   private
@@ -37,7 +37,9 @@ class PetsittersController < ApplicationController
   end
 
   def petsitter_params
-    params.require(:petsitter).permit(:description, :category, :location, :price)
+    params.require(:petsitter).permit(:description,
+                                      :category,
+                                      :location,
+                                      :price)
   end
-
 end
