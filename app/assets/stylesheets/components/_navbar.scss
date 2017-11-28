@@ -10,6 +10,10 @@
   justify-content: space-between;
 }
 
+hr {
+  margin:0;
+}
+
 /* Logo */
 .navbar-wagon-brand img {
   height: 50px;
@@ -37,11 +41,22 @@
 
 /* Navbar link */
 .navbar-wagon-link {
-  color: #616668;
+  color: $grey_nav;
   font-size: 14px;
+  transition: all ease 0.2s;
 }
+
+.navbar-wagon-link:nth-child(2) {
+  border-right: 1px solid $grey_nav;
+}
+
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: $blue;
+  text-decoration: none;
+}
+
+.navbar-wagon-link:first-child {
+  color: white;
   text-decoration: none;
 }
 
@@ -59,9 +74,13 @@
   line-height: 22px !important;
   padding: 10px 20px;
 }
+
+.navbar-wagon-dropdown-menu a.btn {
+    color: white !important;
+  }
 .navbar-wagon-dropdown-menu li > a:hover {
   background: transparent !important;
-  color: black !important;
+  color: $blue !important;
 }
 .navbar-wagon-dropdown-menu:before {
   content: ' ';

@@ -10,47 +10,138 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+
+
+      <!-- ********** AJOUTER UNE ANNONCE link = new_petsitter_path ********** -->
+      <%= link_to t(".sign_in", default: "Publier une annonce !"), new_user_registration_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %>
+
+      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
+      <i class="fa fa-bookmark" aria-hidden="true"></i>
+      Mes reservations
+    <% end %>
+
+
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+
+
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+                <i class="fa fa-home"></i>  <%= t(".profile", default: "Tableau de bord") %>
               <% end %>
             </li>
+
             <li>
               <%= link_to "#" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
+                <i class="fa fa-address-card" aria-hidden="true"></i> <%= t(".profile", default: "Mes annonces") %>
               <% end %>
             </li>
+
+            <li>
+              <%= link_to "#" do %>
+                <i class="fa fa-comments" aria-hidden="true"></i> <%= t(".profile", default: "Mes messages") %>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to "#" do %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "Mes informations") %>
+              <% end %>
+
+            </li>
+
+            <hr>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Se deconnecter") %>
               <% end %>
             </li>
           </ul>
         </div>
       </div>
+
+
     <% else %>
+
       <!-- Login link (when logged out) -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
+      <!-- ********** AJOUTER UNE ANNONCE link = new_petsitter_path ********** -->
+      <%= link_to t(".sign_in", default: "Publier une annonce !"), new_user_registration_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %>
+
+      <!-- ********** S'INSCRIRE ********** -->
+      <%= link_to t(".sign_in", default: "S'inscrire"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
+
+      <!-- ********** SE CONNECTER ********** -->
+      <%= link_to t(".sign_in", default: "Connexion"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
+  <!-- Dropdown list appearing on mobile only -->
   <div class="navbar-wagon-item hidden-md hidden-lg">
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <% if user_signed_in? %>
+          <!-- Links when logged in -->
+            <li><%= link_to t(".sign_in", default: "Publier une annonce !"), new_user_registration_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %></li>
+
+            <li><%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
+            <i class="fa fa-bookmark" aria-hidden="true"></i>
+            Mes reservations
+            <% end %></li>
+
+            <li><%= link_to "#" do %>
+                <i class="fa fa-home"></i>  <%= t(".profile", default: "Tableau de bord") %>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to "#" do %>
+                <i class="fa fa-address-card" aria-hidden="true"></i> <%= t(".profile", default: "Mes annonces") %>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to "#" do %>
+                <i class="fa fa-comments" aria-hidden="true"></i> <%= t(".profile", default: "Mes messages") %>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to "#" do %>
+                <i class="fa fa-user"></i> <%= t(".profile", default: "Mes informations") %>
+              <% end %>
+
+            </li>
+
+            <hr>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Se deconnecter") %>
+              <% end %>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+        <% else %>
+
+          <!-- Login link (when logged out) -->
+
+          <!-- ********** AJOUTER UNE ANNONCE link = new_petsitter_path ********** -->
+        <li><%= link_to t(".sign_in", default: "Publier une annonce !"), new_user_registration_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %></li>
+
+          <!-- ********** S'INSCRIRE ********** -->
+          <li><%= link_to t(".sign_in", default: "S'inscrire"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+
+          <!-- ********** SE CONNECTER ********** -->
+          <li><%= link_to t(".sign_in", default: "Connexion"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+        <% end %>
       </ul>
     </div>
   </div>
