@@ -1,5 +1,5 @@
 class PetsittersController < ApplicationController
-  before_action :set_petsitter, only: %i[edit update show destroy]
+  before_action :set_petsitter, only: %i[edit update show destroy ]
   # Whitelist les vues pour les users qui ne sont pas enregistrés
   skip_before_action :authenticate_user!, only: %i[index show edit destroy]
 
@@ -15,8 +15,12 @@ class PetsittersController < ApplicationController
 
   def create
     @petsitter = Petsitter.new(petsitter_params)
-    @petsitter.save
-    redirect_to petsitter(@petsitter)
+    #if
+      @petsitter.save
+      redirect_to petsitter_path(@petsitter)
+    # else
+      # render :new
+    #end
   end
 
   def edit; end
