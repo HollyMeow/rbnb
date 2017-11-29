@@ -1,20 +1,25 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[edit update show destroy]
   skip_before_action :authenticate_user!, only: %i[index show edit destroy]
-
+ 
   def index
     @bookings = Booking.all
   end
 
   def new
+    @petsitter = Petsitter.find(params[:petsitter_id])
     @booking = Booking.new
   end
 
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
+    @petsitter = Petsitter.find(params[:petsitter_id])
+    @booking.petsitter = @petsitter
+    time_booking = @booking.date_end - @booking.date_start
+    @booking.total_price = time_booking * @petsitter.price
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to petsitter_bookings_path(@booking.id)
     else
       render :new
     end

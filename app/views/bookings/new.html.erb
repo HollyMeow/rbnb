@@ -3,7 +3,7 @@
   <h2>Confirmer votre réservation</h2>
 
   <div>
-    <%= simple_form_for @booking do |r| %>
+    <%= simple_form_for [@petsitter, @booking] do |r| %>
      <%= r.input :date_start, label: 'Date de début :'%>
      <%= r.input :date_end, label: 'Date de fin :'%>
     <%= r.button :submit, value: 'Confirmer la réservation', class: 'btn-success btn-block' %>
