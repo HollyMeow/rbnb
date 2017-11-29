@@ -1,0 +1,23 @@
+<%= link_to 'Créer une réservation', new_booking_path %>
+<% @bookings.each do |b| %>
+  <ul>
+  <% if b.petsitter.user.email == current_user.email  %>
+      <li>
+          Le petsitter était <%= b.petsitter.user.name %>
+      </li>  
+      <li>
+          L'endroit de la réservation <%= b.petsitter.location %>
+      </li>
+      <li>
+          Le prix était de <%= b.total_price %> €
+      </li>
+      <li>
+          La réservation du <%= b.date_start %> au <%= b.date_end %>
+      </li>
+      <%= link_to 'Modifier', edit_booking_path(b.id) %>
+      <%= link_to 'Annuler', booking_path(b.id), method: :delete %>
+  </ul>
+
+  <% end %>   
+  <% end %>
+

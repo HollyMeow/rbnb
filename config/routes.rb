@@ -1,21 +1,10 @@
 Rails.application.routes.draw do
-  # get 'petsitters/index'
-
-  # get 'petsitters/show'
-
-  # get 'petsitters/new'
-
-  # get 'petsitters/createedit'
-
-  # get 'petsitters/update'
-
-  # get 'petsitters/destroy'
-
+  # Creation des routes de user
   devise_for :users
+  # Creation des routes des pages #home et #dashboard
   root to: 'pages#home'
   get '/dashboard', to: 'pages#dashboard'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-resources :petsitters
-
+  # Creation des routes Booking et petsitters
+  resources :bookings
+  resources :petsitters
 end
