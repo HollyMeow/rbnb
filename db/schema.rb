@@ -32,23 +32,12 @@ ActiveRecord::Schema.define(version: 20171129111736) do
     t.string   "description"
     t.string   "category"
     t.string   "location"
-    t.boolean  "availability", default: true, null: false
+    t.boolean  "availability", default: true
     t.integer  "user_id"
     t.integer  "price"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.index ["user_id"], name: "index_petsitters_on_user_id", using: :btree
-  end
-
-  create_table "reviews", force: :cascade do |t|
-    t.string   "comment"
-    t.integer  "rating"
-    t.integer  "user_id"
-    t.integer  "petsitter_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["petsitter_id"], name: "index_reviews_on_petsitter_id", using: :btree
-    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -71,6 +60,4 @@ ActiveRecord::Schema.define(version: 20171129111736) do
   add_foreign_key "bookings", "petsitters"
   add_foreign_key "bookings", "users"
   add_foreign_key "petsitters", "users"
-  add_foreign_key "reviews", "petsitters"
-  add_foreign_key "reviews", "users"
 end

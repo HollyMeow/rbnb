@@ -1,1 +1,111 @@
-<h1>Salut, je suis ton dashboard !!!</h1>
+<div class="container">
+  <h1>Bonjour < current_user.name >, je suis votre tableau de bord !</h1>
+  <div class="row">
+
+    <div class="col-xs-12 col-md-4 ">
+      <div class="bordure_grise fond-blanc" >
+        <div style="  padding: 15px;">
+            <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+            <p> $name</p>
+            <%= link_to "Changer mon mpd", edit_user_password_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %>
+          </div>
+      </div>
+
+        <div class="bordure_grise fond-blanc" >
+          <h3><i class="fa fa-comments" aria-hidden="true"></i>Mes messages</h3>
+          <div style="  padding: 15px;">
+              <p> 1 message non lu !</p>
+              <%= link_to "Voir mes messages", edit_user_password_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %>
+          </div>
+        </div>
+    </div>
+
+
+    <div class="col-xs-12 col-md-7">
+
+      <div class="bordure_grise fond-blanc" >
+        <h3><i class="fa fa-calendar" aria-hidden="true"></i>Mes reservations</h3>
+        <div style="  padding: 15px;">
+            <p>$booking $date $price_calcul $status</p>
+            <hr>
+            <%= link_to "Modifier ma reservation", edit_user_password_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %>
+        </div>
+      </div>
+
+
+      <div class="bordure_grise fond-blanc" >
+        <h3><i class="fa fa-address-card-o" aria-hidden="true"></i>Mes annnonces</h3>
+        <div style="  padding: 15px;">
+            <p>$petsitter $description $location $category_animal $price</p>
+            <hr>
+            <%= link_to "Modifier mon annonce", edit_user_password_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %>
+        </div>
+      </div>
+
+      <div class="bordure_grise fond-blanc" >
+        <h3><i class="fa fa-commenting" aria-hidden="true"></i>Mes commentaires</h3>
+        <div style="  padding: 15px;">
+          <p style="font-style: italic;"><i class="fa fa-quote-left" aria-hidden="true"></i>
+           $commentaire
+          <i class="fa fa-quote-right align-right" aria-hidden="true"></i></p>
+          <div class="row">
+            <div class="col-xs-6">
+             <p> $rating</p>
+            </div>
+
+            <div class="col-xs-6">
+             <p> $name</p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .bordure_grise h3 {
+  background-color: #ccc;
+  border-bottom: 1px grey solid;
+  margin:0;
+  font-size: 1.2em;
+  padding: 0.4em;
+  }
+  .bordure_grise {
+  border: 1px grey solid;
+  border-radius: 4px;
+  text-align: center;
+
+  margin-bottom: 2em;
+  }
+  .bordure_grise a {
+    color:white;
+  }
+
+  .bordure_grise i {
+    margin-right: 3px;
+    margin-left: 3px;
+  }
+  .avatar {
+    height: 10em;
+    width: 10em;
+    border-radius: 50%;
+  }
+  .fond-blanc {
+    background-color: white;
+  }
+
+  .etoiles {
+    text-align: left;
+  }
+
+  .com-name {
+    text-align: right;
+  }
+</style>
