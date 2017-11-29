@@ -15,12 +15,12 @@ class PetsittersController < ApplicationController
 
   def create
     @petsitter = Petsitter.new(petsitter_params)
-    #if
-      @petsitter.save
+    @petsitter.user = current_user
+    if @petsitter.save
       redirect_to petsitter_path(@petsitter)
-    # else
-      # render :new
-    #end
+    else
+      render :new
+    end
   end
 
   def edit; end
@@ -31,7 +31,8 @@ class PetsittersController < ApplicationController
 
   def destroy
     @petsitter.destroy
-    # redirect_to petsitters_path => Doit rediriger vers le dashboard
+    redirect_to petsitters_path
+    # => Doit rediriger vers le dashboard
   end
 
   private
