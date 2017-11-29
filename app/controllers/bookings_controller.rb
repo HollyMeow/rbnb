@@ -10,13 +10,25 @@ class BookingsController < ApplicationController
     @booking = Booking.new
   end
 
-  def create; end
+  def create
+    @booking = Booking.new(booking_params)
+    @booking.user = current_user
+    if @booking.save
+      redirect_to booking_path(@booking)
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    @booking.destroy
+  end
 
   def edit; end
 
-  def update; end
-
-  def destroy; end
+  def update
+    @booking.update(booking_params)
+  end
 
   private
 
