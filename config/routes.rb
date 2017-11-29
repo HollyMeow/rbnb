@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get '/dashboard', to: 'pages#dashboard'
   # Creation des routes Booking et petsitters
-  resources :bookings
-  resources :petsitters
+  resources :petsitters do
+    resources :bookings
+  end
 end
