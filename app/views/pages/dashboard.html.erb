@@ -7,7 +7,17 @@
         <div style="  padding: 15px;">
             <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
             <p> $name</p>
-            <%= link_to "Changer mon mpd", edit_user_password_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %>
+            <%= link_to "Modifier mes informations", edit_user_registration_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %>
+
+
+            <%= link_to user_registration_path, class: "btn btn-danger btn-lg  navbar-wagon-link",
+            data: { confirm: "Etes vous certain?" },
+            method: :delete  do%>
+              supprimer mon compte
+            <% end  %>
+
+
+
           </div>
       </div>
 
