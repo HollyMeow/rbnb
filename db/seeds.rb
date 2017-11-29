@@ -7,12 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts 'starting..'
-
-Petsitter.destroy_all
-User.destroy_all
+# User.destroy_all
+# Booking.destroy_all
 
 50.times do
   User.create!(
+    name: Faker::Name.first_name, 
     email: Faker::Internet.email,
     password: Faker::Internet.password
   )
@@ -28,6 +28,17 @@ User.find_each do |user|
     location: Faker::Address.street_name,
     price: rand(100),
     user: user
+  )
+end
+
+50.times do 
+  Booking.create!(
+    user: User.all.sample,
+    petsitter: Petsitter.all.sample,
+    date_start: "25-11-20",
+    date_end: "25-11-25",
+    total_price: rand(200), 
+    status: ['En attente', 'Accepté', 'Refusé'].sample
   )
 end
 

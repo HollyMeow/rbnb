@@ -1,0 +1,16 @@
+<% @bookings.each do |b| %>
+  <ul>
+      <li>
+          Le petsitter était <%= b.petsitter.user.name %>
+      </li>  
+      <li>
+          L'endroit de la réservation <%= b.petsitter.location %>
+      </li>
+      <li>
+      Le prix était de <%= b.total_price %> €
+      </li>
+      <li>
+      La réservation du <%= b.date_start %> au <%= b.date_end %>
+      </li>
+  </ul>
+<% end %>   
