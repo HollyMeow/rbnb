@@ -7,7 +7,18 @@
     <div class="col-xs-12">
       <h2>MODIFIER VOTRE ANNONCE :</h2>
       <hr>
+      <%= simple_form_for @petsitter do |r| %>
+        <%= r.input :description, label: 'Décrivez-vous et vos services proposés :',  placeholder: 'Exemple : Bonjour, je propose de sortir vos chiens et de caliner vos chats avec plaisir ! '%>
 
+
+        <%= r.input :category, collection: (%w(chien chat éléphant kangal hamster tortue)) %>
+
+        <%= r.input :location, label: 'Le secteur où vous proposez vos services :',   placeholder: '13009 Aix-en-Provence'%>
+
+          <%= r.input :price, label: 'Votre prix par heure :',   placeholder: '10'%>
+
+        <%= r.button :submit, value: 'Garder des annimaux', class: 'btn-success btn-block' %>
+      <% end %>
     </div>
   </div>
   <%= link_to '<-- Revenir aux annonces', petsitters_path, class: "btn btn-default" %>
