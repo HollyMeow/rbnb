@@ -13,4 +13,12 @@
     </div>
 
     <%= link_to 'Ajouter un commentaire', new_petsitter_booking_review_path(@booking.petsitter, @booking) %>
+
+    <% @booking.reviews.each do |f| %> 
+      <ul>
+        <li>
+          Commentaire : <%= f.comment %>   Note : <%= f.rating %>
+        </li>
+      </ul>
+    <% end %>
 </div>
