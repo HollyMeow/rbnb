@@ -11,4 +11,6 @@
           edit_petsitter_booking_path(@booking), 
           class: "btn btn-primary btn-lg  navbar-wagon-link" %>
     </div>
+
+    <%= link_to 'Ajouter un commentaire', new_petsitter_booking_review_path(@booking.petsitter, @booking) %>
 </div>

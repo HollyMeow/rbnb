@@ -4,11 +4,16 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @petsitter = Petsitter.find(params[:petsitter_id])
+    @booking = Booking.find(params[:booking_id])
     @review = Review.new
   end
 
   def create
-    Review.create(review_params)
+    @review = Review.new(review_params)
+    @petsitter = Petsitter.find(params[:petsitter_id])
+    @booking = Booking.find(params[:booking_id])
+    redirect_to petsitter_booking_path(@petsitter, @booking)
   end
 
   private
