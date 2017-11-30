@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  mount Attachinary::Engine => "/attachinary"
+  mount Attachinary::Engine => '/attachinary'
 
   # Creation des routes de user
   devise_for :users
@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#dashboard'
   # Creation des routes Booking et petsitters
   resources :petsitters do
-    resources :bookings
+    resources :bookings do
+      resources :reviews
+    end
   end
-
-
 end
