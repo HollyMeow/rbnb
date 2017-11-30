@@ -6,7 +6,6 @@
       <div class="bordure_grise fond-blanc" >
         <div style="  padding: 15px;">
             <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
-            <p> $name</p>
             <%= link_to "Modifier mes informations", edit_user_registration_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %>
 
 
@@ -44,7 +43,11 @@
       <div class="bordure_grise fond-blanc" >
         <h3><i class="fa fa-address-card-o" aria-hidden="true"></i>Mes annnonces</h3>
         <div style="  padding: 15px;">
-            <p>$petsitter $description $location $category_animal $price</p>
+          <ul><% @petsitters.each do |petsitter| %>
+            <hr>
+            <%= link_to petsitter.description, petsitter_path(petsitter.id) %>
+            <% end %>
+          </ul>
             <hr>
             <%= link_to "Modifier mon annonce", edit_user_password_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %>
         </div>
@@ -78,6 +81,8 @@
 
 
 <style>
+
+
   .bordure_grise h3 {
   background-color: #ccc;
   border-bottom: 1px grey solid;
@@ -93,7 +98,7 @@
   margin-bottom: 2em;
   }
   .bordure_grise a {
-    color:white;
+    color: #cccccc;
   }
 
   .bordure_grise i {
