@@ -5,5 +5,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    # @petsitters = Petsitter.where(email: current_user.email)
+    @petsitters = current_user.petsitters
   end
 end
