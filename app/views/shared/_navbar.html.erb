@@ -15,9 +15,9 @@
       <!-- ********** AJOUTER UNE ANNONCE link = new_petsitter_path ********** -->
       <%= link_to t(".sign_in", default: "Publier une annonce !"), new_petsitter_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %>
 
-      <%= link_to dashboard_path, class: "navbar-wagon-item navbar-wagon-link" do %>
-      <i class="fa fa-bookmark" aria-hidden="true"></i>
-      Mes reservations
+      <%= link_to petsitters_path, class: "navbar-wagon-item navbar-wagon-link" do %>
+      <i class="fa fa-book" aria-hidden="true"></i>
+            Trouver un petsitter
     <% end %>
 
       <!-- Avatar with dropdown menu -->
@@ -32,7 +32,7 @@
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to dashboard_path do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Tableau de bord") %>
+                 <i class="fa fa-bookmark" aria-hidden="true"></i>  <%= t(".profile", default: "Mes réservations") %>
               <% end %>
             </li>
 
@@ -91,15 +91,28 @@
           <!-- Links when logged in -->
             <li><%= link_to t(".sign_in", default: "Publier une annonce !"), new_petsitter_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %></li>
 
-            <li><%= link_to dashboard_path, class: "navbar-wagon-item navbar-wagon-link" do %>
-            <i class="fa fa-bookmark" aria-hidden="true"></i>
-            Mes reservations
+
+
+
+
+
+            <li><%= link_to petsitters_path, class: "navbar-wagon-item navbar-wagon-link" do %>
+            <i class="fa fa-book" aria-hidden="true"></i>
+            Trouver un petsitter
             <% end %></li>
 
+
+
+
             <li><%= link_to dashboard_path do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Tableau de bord") %>
+                <i class="fa fa-bookmark" aria-hidden="true"></i>  <%= t(".profile", default: "Mes réservations") %>
               <% end %>
             </li>
+
+
+
+
+
 
             <li>
               <%= link_to "#" do %>

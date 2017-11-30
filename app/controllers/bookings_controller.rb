@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[edit update show destroy]
   skip_before_action :authenticate_user!, only: %i[index show edit destroy]
- 
+
   def index
     @bookings = Booking.all
   end
@@ -19,11 +19,13 @@ class BookingsController < ApplicationController
     time_booking = @booking.date_end - @booking.date_start
     @booking.total_price = time_booking * @petsitter.price
     if @booking.save
-      redirect_to petsitter_bookings_path(@booking.id)
+      redirect_to petsitter_booking_path(@petsitter, @booking)
     else
       render :new
     end
   end
+
+  def show; end
 
   def destroy
     @booking.destroy
@@ -32,7 +34,10 @@ class BookingsController < ApplicationController
   def edit; end
 
   def update
+    @booking.date_start = Date.parse(params[:booking][:date_start])
+    @booking.date_end = Date.parse(params[:booking][:date_end])
     @booking.update(booking_params)
+    redirect_to petsitter_booking_path(@booking.petsitter, @booking)
   end
 
   private
@@ -42,6 +47,9 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:date_start, :date_end, :total_price)
+    params.require(:booking).permit(:date_start,
+                                    :date_end,
+                                    :total_price,
+                                    :booking)
   end
 end
