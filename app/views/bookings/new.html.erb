@@ -4,7 +4,7 @@
 
   <div>
     <%= simple_form_for [@petsitter, @booking] do |r| %>
-     <%= r.input :date_start, as: :string, label: 'Date de début :', input_html: { class: 'datepicker' }%>
+     <%= r.input :date_start, as: :string, label: 'Date de début :', :date, html5:true, label: 'Date de fin :'%>
      <%= r.input :date_end, as: :string, label: 'Date de début :', :date, html5:true, label: 'Date de fin :'%>
     <%= r.button :submit, value: 'Confirmer la réservation', class: 'btn-success btn-block' %>
     <% end %>
