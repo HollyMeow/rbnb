@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[edit update show destroy]
   skip_before_action :authenticate_user!, only: %i[index show edit destroy]
- 
+
   def index
     @bookings = Booking.all
   end
@@ -27,6 +27,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
+    redirect_to dashboard_path
   end
 
   def edit; end

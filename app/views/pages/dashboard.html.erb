@@ -5,7 +5,7 @@
     <div class="col-xs-12 col-md-4 ">
       <div class="bordure_grise fond-blanc" >
         <div style="  padding: 15px;">
-            <%= cl_image_tag current_user.photo.path, width: 40, height: 40, crop: :fill, class: "avatar" %>
+            <%= cl_image_tag current_user.photo.path, width: 180, height: 180, crop: :fill, class: "avatar" %>
             <%= link_to "Modifier mes informations", edit_user_registration_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %>
             <%= link_to user_registration_path, class: "btn btn-danger btn-lg  navbar-wagon-link",
             data: { confirm: "Etes vous certain?" },
@@ -28,12 +28,31 @@
 
     <div class="col-xs-12 col-md-7">
 
+
+
       <div class="bordure_grise fond-blanc" >
         <h3><i class="fa fa-calendar" aria-hidden="true"></i>Mes reservations</h3>
         <div style="  padding: 15px;">
-            <p>$booking $date $price_calcul $status</p>
+            <ul>
+            <% @bookings.each do |booking| %>
             <hr>
-            <%= link_to "Modifier ma reservation", edit_user_password_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %>
+            Réservation n°<%= booking.id%> du <%= booking.date_start %> au <%= booking.date_end %>
+            <br>
+            Etat de votre réservation : <%= booking.status %>
+            <br>
+            <%= link_to petsitter_booking_path(booking.petsitter,booking), class: "btn btn-danger",
+                data: { confirm: "Etes vous certain?" },
+                method: :delete  do%>
+                <i class="fa fa-times" aria-hidden="true"></i>
+              <% end  %>
+
+            <%= link_to edit_petsitter_booking_path(booking.petsitter,booking), class: "btn btn-primary" do%>
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            <% end  %>
+            <% end %>
+          </ul>
+            <hr>
+            <%= link_to "Faire une reservation", petsitters_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %>
         </div>
       </div>
 
@@ -41,15 +60,23 @@
       <div class="bordure_grise fond-blanc" >
         <h3><i class="fa fa-address-card-o" aria-hidden="true"></i>Mes annnonces</h3>
         <div style="  padding: 15px;">
-          <ul><% @petsitters.each do |petsitter| %>
-            <hr>
-            <%= link_to petsitter.description, petsitter_path(petsitter.id) %>
-            <% end %>
+            <%#binding.pry %>
+            <% if !current_user.petsitters.empty? %>
+
+            <ul>
+              <% @petsitters.each do |petsitter| %>
+              <hr>
+              <%= link_to petsitter.description, petsitter_path(petsitter.id) %>
+              <% end %>
           </ul>
+            <% else %>
             <hr>
-            <%= link_to "Modifier mon annonce", edit_user_password_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %>
+            <%= link_to "Créer une annonce", new_petsitter_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %>
+            <% end %>
         </div>
       </div>
+
+
 
       <div class="bordure_grise fond-blanc" >
         <h3><i class="fa fa-commenting" aria-hidden="true"></i>Mes commentaires</h3>
@@ -105,8 +132,8 @@
     margin-left: 3px;
   }
   .avatar {
-    height: 10em;
-    width: 10em;
+/*    height: 10em;
+    width: 10em;*/
     border-radius: 50%;
   }
   .fond-blanc {
