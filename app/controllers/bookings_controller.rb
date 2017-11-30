@@ -34,6 +34,8 @@ class BookingsController < ApplicationController
   def edit; end
 
   def update
+    @booking.date_start = Date.parse(params[:booking][:date_start])
+    @booking.date_end = Date.parse(params[:booking][:date_end])
     @booking.update(booking_params)
     redirect_to petsitter_booking_path(@booking.petsitter, @booking)
   end
