@@ -31,5 +31,10 @@
       <hr style="margin-top: 10px; margin-bottom: 10px;">
     </div>
   </div>
+
+  <div class="reviews">
+
+  <%= @petsitter.user.reviews %>
+  </div>
   <%= link_to '<-- Revenir aux annonces', petsitters_path, class: "btn btn-default" %>
 </div>

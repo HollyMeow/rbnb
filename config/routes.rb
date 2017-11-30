@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'reviews/index'
+
+  get 'reviews/new'
+
+  get 'reviews/create'
+
   mount Attachinary::Engine => '/attachinary'
 
   # Creation des routes de user
