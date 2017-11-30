@@ -88,7 +88,7 @@
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <% if user_signed_in? %>
           <!-- Links when logged in -->
-            <li><%= link_to t(".sign_in", default: "Publier une annonce !"), new_user_registration_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %></li>
+            <li><%= link_to t(".sign_in", default: "Publier une annonce !"), new_petsitter_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %></li>
 
             <li><%= link_to dashboard_path, class: "navbar-wagon-item navbar-wagon-link" do %>
             <i class="fa fa-bookmark" aria-hidden="true"></i>

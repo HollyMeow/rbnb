@@ -1,13 +1,23 @@
 <div class="container">
   <%= image_tag "logo.png", class: "text-center" %>
   <h2>Trouver rapidement des animaux à chouchouter</h2>
+  <hr style="margin-top:1em; margin-bottom:1em">
   <div>
     <%= simple_form_for @petsitter do |r| %>
       <%= r.input :description, label: 'Décrivez-vous et vos services proposés :',  placeholder: 'Exemple : Bonjour, je propose de sortir vos chiens et de caliner vos chats avec plaisir ! '%>
       <%= r.input :category, collection: (%w(chien chat éléphant kangal hamster tortue)) %>
       <%= r.input :location, label: 'Le secteur où vous proposez vos services :',   placeholder: '13009 Aix-en-Provence'%>
-      <%= r.input :price, label: 'Votre prix par heure :',   placeholder: '10'%>
-      <%= r.button :submit, value: 'Garder des annimaux', class: 'btn-success btn-block' %>
+
+
+      <label for="price">blabla</label>
+      <div class="input-group">
+        <%= r.input :price, label: false,   placeholder: '10', class: "form-control currency", id: "c2" %>
+        <span class="input-group-addon">€</span>
+      </div>
+
+
+
+      <%= r.button :submit, value: 'Garder des annimaux', class: 'btn-success btn-block', style: "margin-top:1em; margin-bottom:1em" %>
     <% end %>
   </div>
 </div>
