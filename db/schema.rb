@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20171130144857) do
     t.string   "description"
     t.string   "category"
     t.string   "location"
-    t.boolean  "availability", default: true, null: false
+    t.boolean  "availability", default: true
     t.integer  "user_id"
     t.integer  "price"
     t.datetime "created_at",                  null: false
