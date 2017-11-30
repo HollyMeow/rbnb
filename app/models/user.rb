@@ -4,4 +4,5 @@ class User < ApplicationRecord
   has_many :petsitters, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  has_attachment :photo
 end

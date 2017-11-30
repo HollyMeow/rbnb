@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Attachinary::Engine => "/attachinary"
+
   # Creation des routes de user
   devise_for :users
   # Creation des routes des pages #home et #dashboard
@@ -8,4 +10,6 @@ Rails.application.routes.draw do
   resources :petsitters do
     resources :bookings
   end
+
+
 end
