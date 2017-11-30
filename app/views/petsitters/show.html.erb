@@ -6,6 +6,9 @@
 
       <div>
         <h3><%= @petsitter.description %></h3>
+        <% if @petsitter.photo? %>
+          <%= cl_image_tag @petsitter.photo.path, width: 400, height: 300, crop: :fill %>
+        <% end %>
         <p><b>J'accepte les :</b> <%= @petsitter.category %></p>
         <p><b>L'animal sera hébergé au :</b> <%= @petsitter.location %></p>
         <p><b>Le prix par jour est de :</b> <%= @petsitter.price %>€</p>

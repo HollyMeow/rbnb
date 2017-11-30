@@ -46,6 +46,7 @@ class PetsittersController < ApplicationController
     params.require(:petsitter).permit(:description,
                                       :category,
                                       :location,
-                                      :price)
+                                      :price,
+                                      :photo)
   end
 end

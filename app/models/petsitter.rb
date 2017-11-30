@@ -4,4 +4,6 @@ class Petsitter < ApplicationRecord
   CATEGORIES = %w[chien chat éléphant kangal hamster tortue].freeze
   validates :description, :location, :category, :price, :user_id, presence: true
   validates :category, inclusion: { in: CATEGORIES }
+
+  has_attachment :photo
 end
