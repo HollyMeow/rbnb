@@ -20,12 +20,13 @@
       Mes reservations
     <% end %>
 
-
-
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+
+          <% if current_user.photo? %>
+            <%= cl_image_tag current_user.photo.path, width: 40, height: 40, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% end %>
 
 
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
@@ -88,7 +89,7 @@
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <% if user_signed_in? %>
           <!-- Links when logged in -->
-            <li><%= link_to t(".sign_in", default: "Publier une annonce !"), new_user_registration_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %></li>
+            <li><%= link_to t(".sign_in", default: "Publier une annonce !"), new_petsitter_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %></li>
 
             <li><%= link_to dashboard_path, class: "navbar-wagon-item navbar-wagon-link" do %>
             <i class="fa fa-bookmark" aria-hidden="true"></i>

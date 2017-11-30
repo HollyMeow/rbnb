@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 ruby '2.3.5'
 
 gem 'devise'
+
+
+
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'pg'
@@ -18,6 +21,16 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem 'bootstrap-datepicker-rails'
+
+
+
+gem 'cloudinary', '1.1.7'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
+gem 'coffee-rails'
+
+
+
 
 group :development, :test do
   gem 'pry-byebug'

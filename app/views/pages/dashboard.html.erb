@@ -1,22 +1,17 @@
 <div class="container">
-  <h1>Bonjour < current_user.name >, je suis votre tableau de bord !</h1>
+  <h2>Bonjour <%=current_user.name %>, voici votre tableau de bord !</h2>
   <div class="row">
 
     <div class="col-xs-12 col-md-4 ">
       <div class="bordure_grise fond-blanc" >
         <div style="  padding: 15px;">
-            <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
-            <p> $name</p>
+            <%= cl_image_tag current_user.photo.path, width: 40, height: 40, crop: :fill, class: "avatar" %>
             <%= link_to "Modifier mes informations", edit_user_registration_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %>
-
-
             <%= link_to user_registration_path, class: "btn btn-danger btn-lg  navbar-wagon-link",
             data: { confirm: "Etes vous certain?" },
             method: :delete  do%>
-              supprimer mon compte
+              Supprimer mon compte
             <% end  %>
-
-
 
           </div>
       </div>
@@ -46,7 +41,11 @@
       <div class="bordure_grise fond-blanc" >
         <h3><i class="fa fa-address-card-o" aria-hidden="true"></i>Mes annnonces</h3>
         <div style="  padding: 15px;">
-            <p>$petsitter $description $location $category_animal $price</p>
+          <ul><% @petsitters.each do |petsitter| %>
+            <hr>
+            <%= link_to petsitter.description, petsitter_path(petsitter.id) %>
+            <% end %>
+          </ul>
             <hr>
             <%= link_to "Modifier mon annonce", edit_user_password_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %>
         </div>
@@ -80,6 +79,9 @@
 
 
 <style>
+
+
+
   .bordure_grise h3 {
   background-color: #ccc;
   border-bottom: 1px grey solid;
@@ -95,7 +97,7 @@
   margin-bottom: 2em;
   }
   .bordure_grise a {
-    color:white;
+    color: #cccccc;
   }
 
   .bordure_grise i {
