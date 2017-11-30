@@ -13,15 +13,6 @@
         <p><b>L'animal sera hébergé au :</b> <%= @petsitter.location %></p>
         <p><b>Le prix par jour est de :</b> <%= @petsitter.price %>€</p>
 
-        <%= link_to petsitter_path(@petsitter.id), class: "btn btn-danger",
-        data: { confirm: "Etes vous certain?" },
-        method: :delete  do%>
-          <i class="fa fa-times" aria-hidden="true"></i>
-        <% end  %>
-
-        <%= link_to edit_petsitter_path(@petsitter.id), class: "btn btn-primary" do%>
-          <i class="fa fa-pencil" aria-hidden="true"></i>
-        <% end  %>
 
         <%= link_to new_petsitter_booking_path(@petsitter.id), class: "btn btn-success" do%>
           <i class="fa fa-handshake-o" aria-hidden="true"></i> Réserver
