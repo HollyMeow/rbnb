@@ -66,8 +66,18 @@
             <ul>
               <% @petsitters.each do |petsitter| %>
               <hr>
-              <%= link_to petsitter.description, petsitter_path(petsitter.id) %>
-              <% end %>
+              Annonce n°<%= petsitter.id%> : <%= petsitter.description %>
+
+            <%= link_to petsitter_path(petsitter.id), class: "btn btn-danger",
+                data: { confirm: "Etes vous certain?" },
+                method: :delete  do%>
+                <i class="fa fa-times" aria-hidden="true"></i>
+              <% end  %>
+
+            <%= link_to edit_petsitter_path(petsitter.id), class: "btn btn-primary" do%>
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            <% end  %>
+            <% end %>
           </ul>
             <% else %>
             <hr>
