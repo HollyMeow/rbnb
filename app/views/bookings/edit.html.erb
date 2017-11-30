@@ -1,2 +1,14 @@
-<h1>Bookings#edit</h1>
-<p>Find me in app/views/bookings/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Modifier Votre Réservation :</h2>
+      <hr>
+      <%= simple_form_for [@booking.petsitter, @booking] do |r| %>
+        <%= r.input :date_start, label: 'Date du début'%>
+        <%= r.input :date_end, label: 'Date de fin' %>
+        <%= r.button :submit, value: 'Garder des annimaux', class: 'btn-success btn-block' %>
+      <% end %>
+    </div>
+  </div>
+  <%= link_to '<-- Revenir à mon tableau de bord', dashboard_path, class: "btn btn-default" %>
+</div>

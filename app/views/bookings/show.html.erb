@@ -1,0 +1,12 @@
+    <div class="bordure_grise fond-blanc" >
+        <h3><i class="fa fa-calendar" aria-hidden="true"></i>Votre réservation</h3>
+        <div style="  padding: 15px;">
+            <ul>
+                <li>Prix de la réservation <%= @booking.total_price %></li>
+                <li>Le petsitting se fera du <% @booking.date_start %> au <%= @booking.date_end %> </li>
+                <li>Le statut de votre commande est: <%= @booking.status %></li>
+            </ul>
+            <hr>
+            <%= link_to "Modifier ma reservation", edit_petsitter_booking_path(@booking), class: " btn btn-primary btn-lg  navbar-wagon-link" %>
+        </div>
+      </div>
