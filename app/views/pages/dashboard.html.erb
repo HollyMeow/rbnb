@@ -34,22 +34,38 @@
         <h3><i class="fa fa-calendar" aria-hidden="true"></i>Mes reservations</h3>
         <div style="  padding: 15px;">
             <ul>
-            <% @bookings.each do |booking| %>
-            <hr>
-            Réservation n°<%= booking.id%> du <%= booking.date_start %> au <%= booking.date_end %>
-            <br>
-            Etat de votre réservation : <%= booking.status %>
-            <br>
-            <%= link_to petsitter_booking_path(booking.petsitter,booking), class: "btn btn-danger",
-                data: { confirm: "Etes vous certain?" },
-                method: :delete  do%>
-                <i class="fa fa-times" aria-hidden="true"></i>
-              <% end  %>
 
-            <%= link_to edit_petsitter_booking_path(booking.petsitter,booking), class: "btn btn-primary" do%>
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-            <% end  %>
+
+            <% @bookings.each do |booking| %>
+              <div class="row">
+                <div class="col-xs-12 col-md-8">
+                  <p>Réservation n°<%= booking.id%></p>
+                  <p>du <%= booking.date_start %> au <%= booking.date_end %></p>
+                </div>
+
+                <div class="col-xs-12 col-md-4">
+                  <button><%= booking.status %></button>
+                  <br>
+                  <%= link_to petsitter_booking_path(booking.petsitter,booking), class: "btn btn-danger",
+                      data: { confirm: "Etes vous certain?" },
+                      method: :delete  do%>
+                      <i class="fa fa-times" aria-hidden="true"></i>
+                  <% end  %>
+
+                  <%= link_to edit_petsitter_booking_path(booking.petsitter,booking), class: "btn btn-primary" do%>
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  <% end  %>
+
+                </div>
+              </div>
+
+
+
+
             <% end %>
+
+
+
           </ul>
             <hr>
             <%= link_to "Faire une reservation", petsitters_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %>
@@ -65,20 +81,29 @@
 
             <ul>
               <% @petsitters.each do |petsitter| %>
+
+                <div class="row">
+                  <div class="col-xs-2" style="text-align: left;">
+                    <%= link_to petsitter_path(petsitter.id), class: "btn btn-danger",
+                      data: { confirm: "Etes vous certain?" },
+                      method: :delete  do%>
+                      <i class="fa fa-times" aria-hidden="true"></i>
+                    <% end  %>
+
+                    <%= link_to edit_petsitter_path(petsitter.id), class: "btn btn-primary" do%>
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <% end  %>
+                  </div>
+                  <div class="col-xs-10" style="text-align: left;">
+                    <p><strong>Annonce n°<%= petsitter.id%>: <span style="text-transform: uppercase;"><%= petsitter.category %><span></strong></p>
+                    <p><%= petsitter.description %></p>
+                  </div>
+
+                </div>
               <hr>
-              Annonce n°<%= petsitter.id%> : <%= petsitter.description %>
+              <% end %>
+            </ul>
 
-            <%= link_to petsitter_path(petsitter.id), class: "btn btn-danger",
-                data: { confirm: "Etes vous certain?" },
-                method: :delete  do%>
-                <i class="fa fa-times" aria-hidden="true"></i>
-              <% end  %>
-
-            <%= link_to edit_petsitter_path(petsitter.id), class: "btn btn-primary" do%>
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-            <% end  %>
-            <% end %>
-          </ul>
             <% else %>
             <hr>
             <%= link_to "Créer une annonce", new_petsitter_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %>
@@ -116,15 +141,16 @@
 
 
 <style>
-
-
-
   .bordure_grise h3 {
   background-color: #ccc;
   border-bottom: 1px grey solid;
   margin:0;
   font-size: 1.2em;
   padding: 0.4em;
+  }
+  .bordure_grise hr {
+    margin-bottom:15px;
+    margin-top:15px;
   }
   .bordure_grise {
   border: 1px grey solid;
@@ -134,7 +160,7 @@
   margin-bottom: 2em;
   }
   .bordure_grise a {
-    color: #cccccc;
+    color: white;
   }
 
   .bordure_grise i {

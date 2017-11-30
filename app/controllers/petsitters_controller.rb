@@ -32,7 +32,7 @@ class PetsittersController < ApplicationController
 
   def destroy
     @petsitter.destroy
-    redirect_to petsitters_path
+    redirect_to dashboard_path
     # => Doit rediriger vers le dashboard
   end
 
