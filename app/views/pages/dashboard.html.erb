@@ -1,18 +1,16 @@
 <div class="container">
-  <h1>Bonjour < current_user.name >, je suis votre tableau de bord !</h1>
+  <h2>Bonjour <%=current_user.name %>, voici votre tableau de bord !</h2>
   <div class="row">
 
     <div class="col-xs-12 col-md-4 ">
       <div class="bordure_grise fond-blanc" >
         <div style="  padding: 15px;">
-            <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+            <%= cl_image_tag current_user.photo.path, width: 40, height: 40, crop: :fill, class: "avatar" %>
             <%= link_to "Modifier mes informations", edit_user_registration_path, class: " btn btn-primary btn-lg  navbar-wagon-link" %>
-
-
             <%= link_to user_registration_path, class: "btn btn-danger btn-lg  navbar-wagon-link",
             data: { confirm: "Etes vous certain?" },
             method: :delete  do%>
-              supprimer mon compte
+              Supprimer mon compte
             <% end  %>
 
           </div>
@@ -81,6 +79,7 @@
 
 
 <style>
+
 
 
   .bordure_grise h3 {
