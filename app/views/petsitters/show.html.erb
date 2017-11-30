@@ -30,8 +30,9 @@
   </div>
 
   <div class="reviews">
-
-  <%= @petsitter.user.reviews %>
+    <% @petsitter.user.reviews.each do |r| %>
+      <%= r.comment %>
+    <% end %>
   </div>
   <%= link_to '<-- Revenir aux annonces', petsitters_path, class: "btn btn-default" %>
 </div>
