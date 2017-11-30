@@ -4,7 +4,7 @@
       <h2>Modifier Votre Réservation :</h2>
       <hr>
       <%= simple_form_for [@booking.petsitter, @booking] do |r| %>
-        <%= r.input :date_start, as: :date, html5:true,  label: 'Date du début'%>
+       <%= r.input :date_start, as: :date, html5:true,  label: 'Date du début'%>
         <%= r.input :date_end, as: :date, html5:true, label: 'Date de fin'%>
         <%= r.button :submit, value: 'Garder des annimaux', class: 'btn-success btn-block' %>
       <% end %>
