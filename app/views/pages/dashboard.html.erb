@@ -39,7 +39,7 @@
             <% @bookings.each do |booking| %>
               <div class="row">
                 <div class="col-xs-12 col-md-8">
-                  <p>Réservation n°<%= booking.id%></p>
+                  <p>Réservation n°<%= booking.id%> de <%=booking.total_price %> €</p>
                   <p>du <%= booking.date_start %> au <%= booking.date_end %></p>
                 </div>
 
@@ -77,13 +77,21 @@
         <h3><i class="fa fa-address-card-o" aria-hidden="true"></i>Mes annnonces</h3>
         <div style="  padding: 15px;">
             <%#binding.pry %>
+
             <% if !current_user.petsitters.empty? %>
 
             <ul>
               <% @petsitters.each do |petsitter| %>
 
+                <div class="col-xs-12 col-md-8">
+                    <p>Annonce n°<%= petsitter.id%>: <span style="text-transform: uppercase;"><%= petsitter.category %><span></p>
+                    <p><%= petsitter.description %></p>
+                  </div>
+
+
+
                 <div class="row">
-                  <div class="col-xs-2" style="text-align: left;">
+                  <div class="class="col-xs-12 col-md-4">
                     <%= link_to petsitter_path(petsitter.id), class: "btn btn-danger",
                       data: { confirm: "Etes vous certain?" },
                       method: :delete  do%>
@@ -93,10 +101,6 @@
                     <%= link_to edit_petsitter_path(petsitter.id), class: "btn btn-primary" do%>
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                     <% end  %>
-                  </div>
-                  <div class="col-xs-10" style="text-align: left;">
-                    <p><strong>Annonce n°<%= petsitter.id%>: <span style="text-transform: uppercase;"><%= petsitter.category %><span></strong></p>
-                    <p><%= petsitter.description %></p>
                   </div>
 
                 </div>
