@@ -119,6 +119,7 @@
       <div class="bordure_grise fond-blanc" >
         <h3><i class="fa fa-commenting" aria-hidden="true"></i>Mes commentaires</h3>
 
+<% if !current_user.reviews.empty? %>
 
         <% current_user.reviews.each do |f| %>
           <div style="  padding: 15px;">
@@ -152,6 +153,11 @@
 
           </div>
         <% end %>
+<% else %>
+<hr>
+  <p>Vous n'avez pas encore posté de commentaire</p>
+  <hr>
+<% end %>
 
       </div>
 
