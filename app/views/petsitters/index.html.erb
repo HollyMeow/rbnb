@@ -1,15 +1,30 @@
+
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <h1>Nos meilleurs pet sitters de ta région</h1>
-      <p><%=Petsitter.count%> annonces trouvées selon tes critères</p>
+    <h1>Nos meilleurs pet sitters de ta région</h1>
+    <p><%=Petsitter.count%> annonces trouvées selon tes critères</p>
 
-      <% @petsitters.each do |petsitter| %>
-      <ul>
-        <li><%= link_to petsitter.description, petsitter_path(petsitter.id) %></li>
-      </ul>
+    <% if !@petsitters.empty? %>
+    <% @petsitters.each do |petsitter| %>
 
-      <% end %>
+    <div class="col-xs-12 col-sm-4">
+      <!-- insert <div class="card"> -->
+        <%= link_to petsitter_path(petsitter.id), class: "card-link" do %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path petsitter.photo.path %>')">
+          <div class="card-category"> <%= petsitter.user.name %>    </div>
+          <div class="card-description">
+            <h2><%= petsitter.category %> </h2>
+          </div>
+          <div class="card-price">
+            <h3><%= petsitter.price %> € </h3>
+          </div>
+         <%= cl_image_tag petsitter.user.photo.path, class: "card-user" %>
+
+        </div>
+        <% end %>
     </div>
-  </div>
-</div>
+    <% end %>
+    <% end %>
+
+    </div>
+    </div>

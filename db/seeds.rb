@@ -1,37 +1,59 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
+
 # Examples:
-#
+
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts 'starting..'
-# User.destroy_all
-# Booking.destroy_all
+User.destroy_all
+Booking.destroy_all
+Petsitter.destroy_all
 
-50.times do
   User.create!(
-    name: Faker::Name.first_name,
-    email: Faker::Internet.email,
-    password: Faker::Internet.password
+    name: "Youssef",
+    email: "youyou_du_54@gmail.com",
+    password: "lolola",
+    photo: File.open(File.join(Rails.root, "/app/assets/images/youyou.png"))
   )
-end
+
+  User.create!(
+    name: "Clement",
+    email: "clement@gmail.com",
+    password: "lololaa",
+    photo: File.open(File.join(Rails.root, "/app/assets/images/clement.png"))
+  )
+
+  User.create!(
+    name: "Margaux",
+    email: "margaux@gmail.com",
+    password: "lololaae",
+    photo: File.open(File.join(Rails.root, "/app/assets/images/margaux.jpeg"))
+  )
+
+  User.create!(
+    name: "Totor",
+    email: "totor@gmail.com",
+    password: "lololaaez",
+    photo: File.open(File.join(Rails.root, "/app/assets/images/totor.jpg"))
+  )
 
 categories = %w[chien chat éléphant kangal hamster tortue]
 # day_price = %w()
 
 User.find_each do |user|
   Petsitter.create!(
-    description: Faker::HowIMetYourMother.quote,
+    description: "je garde tous vos animaux",
     category: categories.sample,
-    location: Faker::Address.street_name,
+    location: "Paris",
     price: rand(100),
-    user: user
+    user: user,
+    photo: File.open(File.join(Rails.root, "/app/assets/images/chat.jpg"))
   )
 end
 
-50.times do
+10.times do
   Booking.create!(
     user: User.all.sample,
     petsitter: Petsitter.all.sample,
