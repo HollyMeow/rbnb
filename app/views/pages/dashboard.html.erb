@@ -45,6 +45,9 @@
               <div class="row">
                 <div class="col-xs-12 col-md-3">
                   <button><%= booking.status %></button>
+                 <%= link_to petsitter_booking_path(booking.petsitter,booking), class: "btn btn-success" do%>
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                  <% end  %>
                 </div>
                 <div class="col-xs-12 col-md-6">
                   <p>Réservation n°<%= booking.id%> de <%=booking.total_price %> €</p>
