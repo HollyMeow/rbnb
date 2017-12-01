@@ -6,6 +6,7 @@
 
         <li> <strong>Prix de la réservation</strong> : <%= @booking.total_price %> €</li>
         <li><strong>Votre <%= @booking.petsitter.category %> se fera garder du</strong> : <%= @booking.date_start %><strong> au </strong><%= @booking.date_end %> </li>
+        <li><strong>Durée du petsitting:</strong> <%= (@booking.date_end.to_date - @booking.date_start.to_date).to_i %> jours</li>
         <li><strong>Votre commande est</strong> : <button> <%= @booking.status %></button></li>
       </ul>
       <hr>
