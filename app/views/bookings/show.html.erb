@@ -1,24 +1,63 @@
-<div class="bordure_grise fond-blanc" >
-<h3><i class="fa fa-calendar" aria-hidden="true"></i>Votre réservation</h3>
+<div class=" container" >
+<div class="bordure_grise">
+  <h3><i class="fa fa-calendar" aria-hidden="true"></i>Votre réservation</h3>
     <div style="  padding: 15px;">
       <ul>
-        <li>Prix de la réservation <%= @booking.total_price %></li>
-        <li>Le petsitting se fera du <%= @booking.date_start %> au <%= @booking.date_end %> </li>
-        <li>Le statut de votre commande est: <%= @booking.status %></li>
+        <li> <strong>Prix de la réservation</strong> : <%= @booking.total_price %> €</li>
+        <li><strong>Votre <%= @booking.petsitter.category %> se fera garder du</strong> : <%= @booking.date_start %><strong> au </strong><%= @booking.date_end %> </li>
+        <li><strong>Votre commande est</strong> : <button> <%= @booking.status %></button></li>
       </ul>
       <hr>
-      <%= link_to "Modifier ma reservation", 
-          edit_petsitter_booking_path(@booking), 
+      <%= link_to "MODIFIER",
+          edit_petsitter_booking_path(@booking),
           class: "btn btn-primary btn-lg  navbar-wagon-link" %>
     </div>
+</div>
 
-    <%= link_to 'Ajouter un commentaire', new_petsitter_booking_review_path(@booking.petsitter, @booking) %>
 
-    <% @booking.reviews.each do |f| %> 
-      <ul>
-        <li>
-          Commentaire : <%= f.comment %>   Note : <%= f.rating %>
-        </li>
-      </ul>
-    <% end %>
+
+
+
+
+
+
+      <% @booking.reviews.each do |f| %>
+        <div class="row bordure_fine fond-blanc">
+          <ul>
+            <div class="col-md-2 col-xs-12">
+              <li>
+              <%= cl_image_tag current_user.photo.path, width: 100, height: 100, crop: :fill, class: "avatar" %>
+              </li>
+            </div>
+
+            <div class="col-md-10 col-xs-12">
+              <li>
+                <strong><%= current_user.name %></strong> :
+              </li>
+              <li>
+                <p><%= f.comment %></p>
+                <% 5.times do |i| %>
+                  <% if i < f.rating %>
+                    <i class="fa fa-star"></i>
+                  <% else %>
+                    <i class="fa fa-star-o"></i>
+                  <% end %>
+                <% end %>
+              </li>
+            </div>
+          </ul>
+        </div>
+      <% end %>
+      <%= link_to 'Ajouter un commentaire', new_petsitter_booking_review_path(@booking.petsitter, @booking), class: "btn btn-default" %>
+
+
+
+
+</div>
+
+
+
+
+
+
 </div>
