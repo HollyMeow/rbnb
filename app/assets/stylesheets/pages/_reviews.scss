@@ -1,0 +1,58 @@
+li {
+  list-style: none;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+
+.bordure_fine {
+  border: 1px grey solid;
+  border-radius: 4px;
+
+  padding: 1em;
+  margin-bottom: 0.5em;
+  }
+
+
+  .avatar {
+/*    height: 10em;
+    width: 10em;*/
+    border-radius: 50%;
+    border:1px #eee solid;
+  }
+
+
+  .fond-blanc {
+    background-color: white;
+  }
+
+
+  .bordure_grise h3 {
+  background-color: #ccc;
+  border-bottom: 1px grey solid;
+  margin:0;
+  font-size: 1.2em;
+  padding: 0.4em;
+  }
+  .bordure_grise a {
+    color: white;
+  }
+  .bordure_grise hr {
+    margin-bottom:15px;
+    margin-top:15px;
+  }
+  .bordure_grise {
+  border: 1px grey solid;
+  border-radius: 4px;
+  text-align: center;
+
+  margin-bottom: 2em;
+  margin-top: 0.4em;
+  }
+
+  .bordure_grise i {
+    margin-right: 3px;
+    margin-left: 3px;
+  }
