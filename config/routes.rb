@@ -14,8 +14,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#dashboard'
   # Creation des routes Booking et petsitters
   resources :petsitters do
-    resources :bookings do
-      resources :reviews
-    end
+    resources :reviews, only: %i[new create]
+    resources :bookings
   end
 end
