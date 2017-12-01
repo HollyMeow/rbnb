@@ -1,11 +1,10 @@
-<div class="container">
-  <%= image_tag "logo.png", class: "text-center" %>
+<div class="container text-center">
+  <%= image_tag "logo.png" %>
   <h2>Trouver rapidement des animaux à chouchouter</h2>
   <hr style="margin-top:1em; margin-bottom:1em">
   <div>
     <%= simple_form_for @petsitter do |r| %>
       <%= r.input :photo, as: :attachinary %>
-
       <%= r.input :description, label: 'Décrivez-vous et vos services proposés :',  placeholder: 'Exemple : Bonjour, je propose de sortir vos chiens et de caliner vos chats avec plaisir ! '%>
       <%= r.input :category, label: 'Type d"animaux :', collection: (%w(chien chat éléphant kangal hamster tortue)) %>
       <%= r.input :location, label: 'Le secteur où vous proposez vos services :',   placeholder: '13009 Aix-en-Provence'%>
@@ -19,7 +18,7 @@
 
 
 
-      <%= r.button :submit, value: 'Garder des annimaux', class: 'btn-success btn-block', style: "margin-top:1em; margin-bottom:1em" %>
+      <%= r.button :submit, value: 'Garder des annimaux', class: 'btn-success', style: "margin-top:1em; margin-bottom:1em" %>
     <% end %>
   </div>
 </div>
