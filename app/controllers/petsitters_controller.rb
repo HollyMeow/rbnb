@@ -27,7 +27,7 @@ class PetsittersController < ApplicationController
 
   def update
     @petsitter.update(petsitter_params)
-    redirect_to petsitter_path(@petsitter)
+    redirect_to dashboard_path
   end
 
   def destroy

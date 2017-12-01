@@ -38,7 +38,7 @@ class BookingsController < ApplicationController
     @booking.date_start = Date.parse(params[:booking][:date_start])
     @booking.date_end = Date.parse(params[:booking][:date_end])
     @booking.update(booking_params)
-    redirect_to petsitter_booking_path(@booking.petsitter, @booking)
+    redirect_to dashboard_path
   end
 
   private
@@ -51,6 +51,7 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:date_start,
                                     :date_end,
                                     :total_price,
-                                    :booking)
+                                    :booking,
+                                    :status)
   end
 end
