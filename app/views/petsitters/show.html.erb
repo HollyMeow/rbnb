@@ -24,35 +24,6 @@
   </div>
 
 
-  <div class="reviews">
-    <% @petsitter.user.reviews.each do |f| %>
-      <div class="row bordure_fine fond-blanc">
-        <ul>
-          <div class="col-md-2 col-xs-12">
-            <li>
-            <%= cl_image_tag current_user.photo.path, width: 100, height: 100, crop: :fill, class: "avatar" %>
-            </li>
-          </div>
-
-          <div class="col-md-10 col-xs-12">
-            <li>
-              <strong><%= @petsitter.user.name %></strong> :
-            </li>
-            <li>
-              <p><%= f.comment %></p>
-              <% 5.times do |i| %>
-                <% if i < f.rating %>
-                  <i class="fa fa-star"></i>
-                <% else %>
-                  <i class="fa fa-star-o"></i>
-                <% end %>
-              <% end %>
-            </li>
-          </div>
-        </ul>
-      </div>
-    <% end %>
-  </div>
 
 
 
