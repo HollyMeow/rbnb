@@ -1,9 +1,9 @@
-<p>Ajouter un commentaire pour cette réservation</p>
 <div class="container">
+  <h2>Ajouter un commentaire sur cette réservation :</h2>
   <div>
     <%= simple_form_for [@petsitter, @booking, @review] do |r| %>
-     <%= r.input :comment, label: 'Commentaire'%>
-     <%= r.input :rating, collection: 1..5, label: 'Note'%>
+     <%= r.input :comment, label: 'Votre avis :'%>
+     <%= r.input :rating, collection: 1..5, label: 'La note du petsitter :'%>
     <%= r.button :submit, value: 'Confirmer votre commentaire', class: 'btn-success btn-block' %>
     <% end %>
   </div>

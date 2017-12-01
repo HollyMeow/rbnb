@@ -3,16 +3,13 @@
   <h3><i class="fa fa-calendar" aria-hidden="true"></i>Votre réservation</h3>
     <div style="  padding: 15px;">
       <ul>
-
+      <hr>
         <li> <strong>Prix de la réservation</strong> : <%= @booking.total_price %> €</li>
         <li><strong>Votre <%= @booking.petsitter.category %> se fera garder du</strong> : <%= @booking.date_start %><strong> au </strong><%= @booking.date_end %> </li>
         <li><strong>Votre commande est</strong> : <button> <%= @booking.status %></button></li>
       </ul>
       <hr>
-      <%= link_to "MODIFIER",
 
-          edit_petsitter_booking_path(@booking),
-          class: "btn btn-primary btn-lg  navbar-wagon-link" %>
     </div>
 </div>
 
@@ -44,6 +41,8 @@
           </ul>
         </div>
       <% end %>
-      <%= link_to 'Ajouter un commentaire', new_petsitter_booking_review_path(@booking.petsitter, @booking), class: "btn btn-default" %>
+      <div class="text-center">
+        <%= link_to 'Ajouter un commentaire', new_petsitter_booking_review_path(@booking.petsitter, @booking), class: "btn btn-default" %>
+      </div>
 </div>
 </div>
